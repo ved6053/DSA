@@ -49,6 +49,41 @@ public class TestTree {
 			preorderRec(root.right);
 		}
 	}
+	
+	void iterativePreorder(Node root) {
+		if(root==null) return;
+		Stack<Node> st= new Stack<>();
+		st.push(root);
+		while(st.isEmpty()==false) {
+			Node curr= st.pop();
+			System.out.print(curr.key+" " );
+			
+			if(curr.right!=null) st.push(curr.right);
+			if(curr.left!=null) st.push(curr.left);
+		}
+		
+		//Time Complexity O(n) Auxiliary O(n)
+	}
+	
+	void iterativePreorderOptimize(Node root) {
+		if(root==null) return;
+		Stack<Node> st = new Stack<>();
+		Node curr=root;
+		while(curr!=null||st.isEmpty()==false) {
+			while(curr!=null) {
+				System.out.print(curr.key+" ");
+				if(curr.right!=null)
+					st.push(curr.right);
+				curr= curr.left;
+			  }
+			
+			if(st.isEmpty()==false) {
+				curr=st.pop();
+			}
+		}
+		
+		//Time complexity O(n) Auxiliary Space O(h)
+	}
 
 	void postorderRec(Node root) {
 		
@@ -115,8 +150,14 @@ public class TestTree {
 		t.iterativeInorder(root);
 		System.out.println();
 		
-		System.out.println("Preorder traversal>>>>>>>");
+		System.out.println("Preorder traversal Rec  >>>>>>>");
 		t.preorderRec(root);
+		System.out.println();
+		System.out.println("Preorder traversal Iterative >>>>>>>");
+		t.iterativePreorder(root);
+		System.out.println();
+		System.out.println("Preorder traversal Iterative Optomize>>>>>>>");
+		t.iterativePreorderOptimize(root);
 		System.out.println();
 		System.out.println("Postorder traversal>>>>>>>");
 		t.postorderRec(root);
