@@ -1,4 +1,4 @@
-package geeksforgeeks;
+package geeksforgeeks.maths;
 
 import java.util.Arrays;
 import java.util.Vector;

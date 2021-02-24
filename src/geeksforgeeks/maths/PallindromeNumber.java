@@ -1,4 +1,4 @@
-package geeksforgeeks;
+package geeksforgeeks.maths;
 
 public class PallindromeNumber {
 
