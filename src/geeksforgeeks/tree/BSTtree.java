@@ -106,6 +106,35 @@ public class BSTtree {
 		}
 		return root;
 	}
+	
+	int floor(Node root, int x) {
+		int floorVal=0;
+		while(root!=null) {
+			if(root.key==x)
+				return root.key;
+			else if(root.key<x) {
+				floorVal=root.key;
+				root = root.right;
+			} else
+				root = root.left;
+		}
+		return floorVal;
+	}
+	
+	int ceil(Node root, int x) {
+		int ceilVal=0;
+		while(root!=null) {
+			if(root.key==x)
+				return root.key;
+			else if(root.key>x) {
+				ceilVal = root.key;
+				root = root.left;
+			} else {
+				root = root.right;
+			}
+		}
+		return ceilVal;
+	}
 	public static void main(String[] args) {
 		BSTtree t= new BSTtree();
 		Node root=t.initialize();
@@ -113,6 +142,8 @@ public class BSTtree {
 		System.out.println("Recursive Search k=7:"+t.searchRec(root, 7));
 		root = t.insertRec(root, 7);
 		System.out.println("Iterative Search k=7:"+t.searchRec(root, 7));
+		System.out.println("Floor Value of 37:"+t.floor(root, 37));
+		System.out.println("Ciel Value of 37:"+t.ceil(root, 37));
 	}
 
 }
